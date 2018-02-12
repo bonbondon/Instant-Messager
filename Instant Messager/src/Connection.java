@@ -16,6 +16,7 @@ public class Connection implements java.lang.Runnable{
 		this.user_database = user_database;
 		try {
 			this.input = new Scanner(socket.getInputStream());
+			this.output = new PrintStream(socket.getOutputStream());
 		} catch (IOException e) {
 			System.out.println("Bad input");
 		}
@@ -38,10 +39,17 @@ public class Connection implements java.lang.Runnable{
 		return output;
 	}
 	public void close(){
-		
+		try {
+			System.out.println("Closing...");
+			socket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}//end try/catch
 	}
 	public void run() {
-		String commandLine = input().next();
+		output.println("Welcome.");
+		output.println("Please enter your command..");
+		String commandLine = input.next();
 		String command = commandLine.substring(0, 4);
 		if(command.equals("CRTE")){
 			
