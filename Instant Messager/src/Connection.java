@@ -48,10 +48,11 @@ public class Connection implements java.lang.Runnable{
 	}
 	public void run() {
 		output.println("Welcome.");
-		output.println("Please enter your command..");
-		//SPECIAL
-		String commandLine = input.next();
-		String command = commandLine.substring(0, 4);
+		output.println("Please enter your command...");
+		String commandLine = input.nextLine();
+		commandLine = "";
+		String command = "";
+		//String command = commandLine.substring(0, 4);
 		if(command.equals("CRTE")){
 			
 		}else if(command.equals("AUTH")){
